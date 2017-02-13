@@ -1,4 +1,5 @@
 div.lad-welcome-mat {
+    display: none;
     background-color: #c3c3c3;
     position: absolute;
     top: 0;
