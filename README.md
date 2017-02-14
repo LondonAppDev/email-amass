@@ -1,2 +1,2 @@
-# welcome-mat
-Code for a welcome mat signup form.
+# email-amass
+Code for the email-amass JavaScript application.

@@ -1,19 +1,19 @@
 {
-  "name": "welcome-mat",
+  "name": "email-amass",
   "version": "0.0.1",
-  "description": "Code for a welcome mat signup form.",
+  "description": "Code for email amass application.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LondonAppDev/welcome-mat.git"
+    "url": "git+https://github.com/LondonAppDev/email-amass.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LondonAppDev/welcome-mat/issues"
+    "url": "https://github.com/LondonAppDev/email-amass/issues"
   },
-  "homepage": "https://github.com/LondonAppDev/welcome-mat#readme"
+  "homepage": "https://github.com/LondonAppDev/email-amass#readme"
 }
