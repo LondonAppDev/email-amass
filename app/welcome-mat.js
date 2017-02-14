@@ -1,7 +1,7 @@
 var WelcomeMat = (function() {
     var pubs = {};
 
-    var delay = 2000;
+    var delay = 1;
     var displayed = false;
 
     /**
