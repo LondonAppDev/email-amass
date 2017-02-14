@@ -1,4 +1,11 @@
+
+html.lad-welcome-mat-block-scroll {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
 div.lad-welcome-mat {
+    z-index: 99999;
     display: none;
     background-color: #c3c3c3;
     position: absolute;
