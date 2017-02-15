@@ -4,6 +4,7 @@
   "description": "Code for email amass application.",
   "main": "index.js",
   "scripts": {
+    "start": "http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/LondonAppDev/email-amass/issues"
   },
-  "homepage": "https://github.com/LondonAppDev/email-amass#readme"
+  "homepage": "https://github.com/LondonAppDev/email-amass#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
 }
