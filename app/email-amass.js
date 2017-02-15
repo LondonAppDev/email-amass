@@ -1,4 +1,4 @@
-var WelcomeMat = (function() {
+var EmailAmass = (function() {
     var pubs = {};
 
     var delay = 1;
@@ -19,12 +19,12 @@ var WelcomeMat = (function() {
     }
 
     /**
-     * Displays the welcome mat.
+     * Displays the email form.
     */
-    function showWelcomeMat() {
+    function showFullPageEmailForm() {
         $('html, body').scrollTop(0);
-        $('div.lad-welcome-mat').show();
-        $('html').addClass('lad-welcome-mat-block-scroll');
+        $('div.email-amass').show();
+        $('html').addClass('email-amass-block-scroll');
     }
 
     /**
@@ -34,11 +34,11 @@ var WelcomeMat = (function() {
         console.log('Initialize.');
         setTimeout(function() {
             console.log('BOOM!');
-            showWelcomeMat();
+            showFullPageEmailForm();
         }, delay);
     };
 
     return pubs;
 })();
 
-WelcomeMat.init();
+EmailAmass.init();
