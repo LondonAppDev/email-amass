@@ -84,10 +84,70 @@ var EmailAmass = (function() {
     }
 
     /**
+     * Injects the HTML to the page.
+    */
+    function injectHtml() {
+        var html = `
+            <div class="email-amass">
+                <div class="email-amass-form-wrapper">
+                    <form id="email-amass-mailchimp-form" action="//londonappdeveloper.us10.list-manage.com/subscribe/post-json?u=018a0f141a1e3951f017d574b&amp;id=e87f4ca56f&amp;c=?" method="get">
+                        <input type="email" value="" name="EMAIL" placeholder="Email Address"/>
+                        <input type="submit" value="Subscribe" />
+                        <input id="email-amass-refuse-signup" type="button" value="Go Away" />
+                    </form>
+                </div>
+            </div>
+        `;
+        $('body').prepend(html);
+    }
+
+    /**
+     * Inject CSS.
+    */
+    function injectCss() {
+        var css = `
+        <style type="text/css">
+            html.email-amass-block-scroll {
+                overflow-x: hidden !important;
+                overflow-y: hidden !important;
+            }
+
+            div.email-amass {
+                z-index: 99999;
+                display: none;
+                background-color: #c3c3c3;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            div.email-amass div.email-amass-form-wrapper {
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin: -150px 0 0 -150px;
+            }
+
+            #email-amass-refuse-signup {
+                background-color: red;
+            }
+        </style>
+        `;
+        $('head').append(css);
+    }
+
+    /**
      * Initialize the application.
     */
     pubs.init = function init() {
         if (shouldShow()) {
+            injectCss();
+            injectHtml();
+
             setTimeout(function() {
                 console.log('BOOM!');
                 showFullPageEmailForm();
