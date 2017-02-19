@@ -33,7 +33,7 @@ var EmailAmass = (function() {
     */
     function showFullPageEmailForm() {
         $('html, body').scrollTop(0);
-        $('div.email-amass').show();
+        $('#email-amass').show();
         $('html').addClass('email-amass-block-scroll');
     }
 
@@ -42,7 +42,7 @@ var EmailAmass = (function() {
     */
     function hideFullPageEmailForm() {
         console.log('Hiding the full page email form');
-        $('div.email-amass').hide();
+        $('#email-amass').hide();
         $('html').removeClass('email-amass-block-scroll');
     }
 
@@ -88,12 +88,14 @@ var EmailAmass = (function() {
     */
     function injectHtml() {
         var html = `
-            <div class="email-amass">
+            <div id="email-amass">
                 <div class="email-amass-form-wrapper">
+                <h2>Full-Stack Dev Hacks</h2>
+                <p class="sub-heading">Get the latest Python, JavaScript and DevOps tutorials</p>
                     <form id="email-amass-mailchimp-form" action="//londonappdeveloper.us10.list-manage.com/subscribe/post-json?u=018a0f141a1e3951f017d574b&amp;id=e87f4ca56f&amp;c=?" method="get">
-                        <input type="email" value="" name="EMAIL" placeholder="Email Address"/>
-                        <input type="submit" value="Subscribe" />
-                        <input id="email-amass-refuse-signup" type="button" value="Go Away" />
+                        <input type="email" class="email-amass-txt-input" value="" name="EMAIL" placeholder="Your email address"/>
+                        <input id="email-amass-signup" class="email-amass-btn" type="submit" value="Yeah, Cheers Mate!" />
+                        <input id="email-amass-refuse-signup" class="email-amass-btn" type="button" value="Bugger Off" />
                     </form>
                 </div>
             </div>
@@ -112,18 +114,20 @@ var EmailAmass = (function() {
                 overflow-y: hidden !important;
             }
 
-            div.email-amass {
+            #email-amass {
                 z-index: 99999;
                 display: none;
-                background-color: #c3c3c3;
+                background-color: #f2f2f2;
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
+                text-align: center;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             }
 
-            div.email-amass div.email-amass-form-wrapper {
+            #email-amass div.email-amass-form-wrapper {
                 width: 300px;
                 height: 300px;
                 position: absolute;
@@ -132,9 +136,34 @@ var EmailAmass = (function() {
                 margin: -150px 0 0 -150px;
             }
 
-            #email-amass-refuse-signup {
-                background-color: red;
+            #email-amass-mailchimp-form input {
+                border-radius: 3px;
             }
+
+
+            #email-amass .email-amass-txt-input {
+                box-shadow: none;
+                border: 1px solid #c3c3c3;
+                padding: 7px;
+                font-size: 25px;
+            }
+
+            #email-amass .email-amass-btn {
+                color: #fff;
+                font-size: 20px;
+                padding: 20px;
+                border: none;
+                margin-top: 10px;
+            }
+
+            #email-amass-refuse-signup {
+                background-color: #747171;
+            }
+
+            #email-amass-signup {
+                background-color: #204194;
+            }
+
         </style>
         `;
         $('head').append(css);
