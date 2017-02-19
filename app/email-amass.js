@@ -4,18 +4,28 @@ var EmailAmass = (function() {
     var delay = 1;
     var displayed = false;
 
+    var cookieName = 'email-amass-displayed';
+    var cookieExpiryDays = 90;
+    var cookieValue = 'email_amass_shown';
+
     /**
      * Test if the user has already once closed or completed signup.
     */
     function shouldShow() {
-
+        var cookie = Cookies.get(cookieName);
+        if (cookie === cookieValue) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
      * Marks the mat as already displayed.
     */
     function markShown() {
-
+        console.log('Setting as shown.');
+        Cookies.set(cookieName, cookieValue, {expires: cookieExpiryDays});
     }
 
     /**
@@ -25,6 +35,15 @@ var EmailAmass = (function() {
         $('html, body').scrollTop(0);
         $('div.email-amass').show();
         $('html').addClass('email-amass-block-scroll');
+    }
+
+    /**
+     * Hide the email form.
+    */
+    function hideFullPageEmailForm() {
+        console.log('Hiding the full page email form');
+        $('div.email-amass').hide();
+        $('html').removeClass('email-amass-block-scroll');
     }
 
     /**
@@ -43,6 +62,7 @@ var EmailAmass = (function() {
      * @param {Object} $form Form object to validate.
     */
     function submitEmail($form) {
+        console.log('Submitting...');
         $.ajax({
             type: $form.attr('method'),
             url: $form.attr('action'),
@@ -52,7 +72,10 @@ var EmailAmass = (function() {
             contentType: 'application/json; charset=utf-8'
         })
         .then(function(res) {
-            console.log('Registration successful.', res);
+            console.log('Submitted...');
+            console.log(res);
+            markShown();
+            hideFullPageEmailForm();
         })
         .catch(function(err) {
             console.log('Registration failed.');
@@ -64,19 +87,26 @@ var EmailAmass = (function() {
      * Initialize the application.
     */
     pubs.init = function init() {
-        console.log('Initialize.');
-        setTimeout(function() {
-            console.log('BOOM!');
-            showFullPageEmailForm();
-        }, delay);
+        if (shouldShow()) {
+            setTimeout(function() {
+                console.log('BOOM!');
+                showFullPageEmailForm();
+            }, delay);
+        }
 
         var $form = $('#email-amass-mailchimp-form');
+
         if ($form.length > 0) {
-            $('#email-amass-mailchimp-form input[type="submit"]').bind('click', function registerClicked(event) {
+            $('#email-amass-mailchimp-form input[type="submit"]').bind('click', function clicked(event) {
                 if (event) event.preventDefault();
                 if (validateForm($form)) {
                     submitEmail($form);
                 }
+            });
+
+            $('#email-amass-refuse-signup').bind('click', function refuseSignUpClicked(event) {
+                markShown();
+                hideFullPageEmailForm();
             });
         }
 
@@ -85,4 +115,6 @@ var EmailAmass = (function() {
     return pubs;
 })();
 
-EmailAmass.init();
+window.onload = function() {
+    EmailAmass.init();
+}
