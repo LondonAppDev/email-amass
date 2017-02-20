@@ -1,7 +1,7 @@
 var EmailAmass = (function() {
     var pubs = {};
 
-    var delay = 1;
+    var delay = 3000;
     var displayed = false;
 
     var cookieName = 'email-amass-displayed';
@@ -32,8 +32,9 @@ var EmailAmass = (function() {
      * Displays the email form.
     */
     function showFullPageEmailForm() {
-        $('html, body').scrollTop(0);
-        $('#email-amass').show();
+        console.log('scrollTop');
+        $('html, body').scrollTop(0, 0);
+        $('#email-amass').slideDown();
         $('html').addClass('email-amass-block-scroll');
     }
 
@@ -42,7 +43,7 @@ var EmailAmass = (function() {
     */
     function hideFullPageEmailForm() {
         console.log('Hiding the full page email form');
-        $('#email-amass').hide();
+        $('#email-amass').slideUp();
         $('html').removeClass('email-amass-block-scroll');
     }
 
@@ -248,7 +249,7 @@ var EmailAmass = (function() {
             });
 
             $('#email-amass-refuse-signup-arrow').bind('click', function refuseSignUpArrowClicked(event) {
-                markShow();
+                markShown();
                 hideFullPageEmailForm();
             });
         }
