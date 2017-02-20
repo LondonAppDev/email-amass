@@ -33,9 +33,9 @@ var EmailAmass = (function() {
     */
     function showFullPageEmailForm() {
         console.log('scrollTop');
-        $('html, body').scrollTop(0, 0);
-        $('#email-amass').slideDown();
+        $('html,body,document').scrollTop(0);
         $('html').addClass('email-amass-block-scroll');
+        $('#email-amass').slideDown();
     }
 
     /**
@@ -228,7 +228,6 @@ var EmailAmass = (function() {
             injectHtml();
 
             setTimeout(function() {
-                console.log('BOOM!');
                 showFullPageEmailForm();
             }, delay);
         }
