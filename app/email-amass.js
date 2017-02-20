@@ -92,15 +92,16 @@ var EmailAmass = (function() {
                 <div class="email-amass-form-wrapper">
                 <h2>Full-Stack Dev Hacks</h2>
                 <p class="sub-heading">Get the latest Python, JavaScript and DevOps tutorials</p>
-                    <form id="email-amass-mailchimp-form" action="//londonappdeveloper.us10.list-manage.com/subscribe/post-json?u=018a0f141a1e3951f017d574b&amp;id=e87f4ca56f&amp;c=?" method="get">
-                        <input type="email" class="email-amass-txt-input" value="" name="EMAIL" placeholder="Your email address"/><br />
-                        <input id="email-amass-signup" class="email-amass-btn" type="submit" value="Yeah, Cheers Mate!" />
-                        <input id="email-amass-refuse-signup" class="email-amass-btn" type="button" value="Bugger Off" />
-                    </form>
+                <br />
+                <form id="email-amass-mailchimp-form" action="//londonappdeveloper.us10.list-manage.com/subscribe/post-json?u=018a0f141a1e3951f017d574b&amp;id=e87f4ca56f&amp;c=?" method="get">
+                    <input type="email" class="email-amass-txt-input" value="" name="EMAIL" placeholder="Your email address"/><br />
+                    <input id="email-amass-signup" class="email-amass-btn" type="submit" value="Yeah, Cheers Mate!" />
+                    <input id="email-amass-refuse-signup" class="email-amass-btn" type="button" value="Bugger Off" />
+                </form>
                 </div>
 
                 <div class="down-arrow-wrapper">
-                    <a class="email-amass-down-arrow-link" href="#">
+                    <a id="email-amass-refuse-signup-arrow" class="email-amass-down-arrow-link" href="#">
                         <span class="email-amass-down-arrow"></span>
                     </a>
                 </div>
@@ -183,14 +184,17 @@ var EmailAmass = (function() {
             }
 
             #email-amass div.down-arrow-wrapper {
+                position: absolute;
+                width: 100%;
+                top: 90%;
                 display: block;
-                
+
             }
 
             #email-amass span.email-amass-down-arrow {
                 display: inline-block;
-                width: 4em;
-                height: 4em;
+                width: 3em;
+                height: 3em;
                 border: 0.5em solid #333;
                 border-radius: 50%;
                 margin-left: 0.75em;
@@ -199,7 +203,7 @@ var EmailAmass = (function() {
             #email-amass span.email-amass-down-arrow:after {
                 content: '';
                 display: inline-block;
-                margin-top: 0.6em;
+                margin-top: 0.3em;
                 width: 1.4em;
                 height: 1.4em;
                 border-top: 0.5em solid #333;
@@ -240,6 +244,11 @@ var EmailAmass = (function() {
 
             $('#email-amass-refuse-signup').bind('click', function refuseSignUpClicked(event) {
                 markShown();
+                hideFullPageEmailForm();
+            });
+
+            $('#email-amass-refuse-signup-arrow').bind('click', function refuseSignUpArrowClicked(event) {
+                markShow();
                 hideFullPageEmailForm();
             });
         }
