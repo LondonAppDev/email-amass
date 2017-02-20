@@ -93,11 +93,18 @@ var EmailAmass = (function() {
                 <h2>Full-Stack Dev Hacks</h2>
                 <p class="sub-heading">Get the latest Python, JavaScript and DevOps tutorials</p>
                     <form id="email-amass-mailchimp-form" action="//londonappdeveloper.us10.list-manage.com/subscribe/post-json?u=018a0f141a1e3951f017d574b&amp;id=e87f4ca56f&amp;c=?" method="get">
-                        <input type="email" class="email-amass-txt-input" value="" name="EMAIL" placeholder="Your email address"/>
+                        <input type="email" class="email-amass-txt-input" value="" name="EMAIL" placeholder="Your email address"/><br />
                         <input id="email-amass-signup" class="email-amass-btn" type="submit" value="Yeah, Cheers Mate!" />
                         <input id="email-amass-refuse-signup" class="email-amass-btn" type="button" value="Bugger Off" />
                     </form>
                 </div>
+
+                <div class="down-arrow-wrapper">
+                    <a class="email-amass-down-arrow-link" href="#">
+                        <span class="email-amass-down-arrow"></span>
+                    </a>
+                </div>
+
             </div>
         `;
         $('body').prepend(html);
@@ -127,17 +134,24 @@ var EmailAmass = (function() {
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             }
 
+            #email-amass h2 {
+                font-size: 50px;
+            }
+
+            #email-amass p.sub-heading {
+                font-size: 30px;
+            }
+
             #email-amass div.email-amass-form-wrapper {
-                width: 300px;
+                width: 100%;
                 height: 300px;
                 position: absolute;
-                left: 50%;
-                top: 50%;
-                margin: -150px 0 0 -150px;
+                left: 0;
+                top: 20%;
             }
 
             #email-amass-mailchimp-form input {
-                border-radius: 3px;
+                border-radius: 5px;
             }
 
 
@@ -151,7 +165,7 @@ var EmailAmass = (function() {
             #email-amass .email-amass-btn {
                 color: #fff;
                 font-size: 20px;
-                padding: 20px;
+                padding: 15px;
                 border: none;
                 margin-top: 10px;
             }
@@ -162,6 +176,37 @@ var EmailAmass = (function() {
 
             #email-amass-signup {
                 background-color: #204194;
+            }
+
+            #email-amass a.email-amass-down-arrow-link {
+                border-radius: 50%;
+            }
+
+            #email-amass div.down-arrow-wrapper {
+                display: block;
+                
+            }
+
+            #email-amass span.email-amass-down-arrow {
+                display: inline-block;
+                width: 4em;
+                height: 4em;
+                border: 0.5em solid #333;
+                border-radius: 50%;
+                margin-left: 0.75em;
+            }
+
+            #email-amass span.email-amass-down-arrow:after {
+                content: '';
+                display: inline-block;
+                margin-top: 0.6em;
+                width: 1.4em;
+                height: 1.4em;
+                border-top: 0.5em solid #333;
+                border-right: 0.5em solid #333;
+                -moz-transform: rotate(135deg);
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
             }
 
         </style>
