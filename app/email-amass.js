@@ -32,8 +32,6 @@ var EmailAmass = (function() {
      * Displays the email form.
     */
     function showFullPageEmailForm() {
-        console.log('scrollTop');
-        $('html,body,document').scrollTop(0);
         $('html').addClass('email-amass-block-scroll');
         $('#email-amass').slideDown();
     }
@@ -102,7 +100,7 @@ var EmailAmass = (function() {
                 </div>
 
                 <div class="down-arrow-wrapper">
-                    <a id="email-amass-refuse-signup-arrow" class="email-amass-down-arrow-link" href="#">
+                    <a id="email-amass-refuse-signup-arrow" class="email-amass-down-arrow-link" href="">
                         <span class="email-amass-down-arrow"></span>
                     </a>
                 </div>
@@ -127,7 +125,7 @@ var EmailAmass = (function() {
                 z-index: 99999;
                 display: none;
                 background-color: #f2f2f2;
-                position: absolute;
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
