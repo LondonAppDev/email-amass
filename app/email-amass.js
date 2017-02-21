@@ -153,7 +153,6 @@ var EmailAmass = (function() {
                 border-radius: 5px;
             }
 
-
             #lad-ea .email-amass-txt-input {
                 box-shadow: none;
                 border: 1px solid #c3c3c3;
