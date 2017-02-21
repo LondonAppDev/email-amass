@@ -1,12 +1,13 @@
 var EmailAmass = (function() {
     var pubs = {};
 
-    var delay = 3000;
+    //var delay = 3000;
+    var delay = 1;
     var displayed = false;
 
-    var cookieName = 'email-amass-displayed';
+    var cookieName = 'lad-ea-shown';
     var cookieExpiryDays = 90;
-    var cookieValue = 'email_amass_shown';
+    var cookieValue = true;
 
     /**
      * Test if the user has already once closed or completed signup.
@@ -24,7 +25,6 @@ var EmailAmass = (function() {
      * Marks the mat as already displayed.
     */
     function markShown() {
-        console.log('Setting as shown.');
         Cookies.set(cookieName, cookieValue, {expires: cookieExpiryDays});
     }
 
@@ -32,17 +32,16 @@ var EmailAmass = (function() {
      * Displays the email form.
     */
     function showFullPageEmailForm() {
-        $('html').addClass('email-amass-block-scroll');
-        $('#email-amass').slideDown();
+        $('html').addClass('lad-ea-stop-scroll');
+        $('#lad-ea').slideDown();
     }
 
     /**
      * Hide the email form.
     */
     function hideFullPageEmailForm() {
-        console.log('Hiding the full page email form');
-        $('#email-amass').slideUp();
-        $('html').removeClass('email-amass-block-scroll');
+        $('#lad-ea').slideUp();
+        $('html').removeClass('lad-ea-stop-scroll');
     }
 
     /**
@@ -61,7 +60,6 @@ var EmailAmass = (function() {
      * @param {Object} $form Form object to validate.
     */
     function submitEmail($form) {
-        console.log('Submitting...');
         $.ajax({
             type: $form.attr('method'),
             url: $form.attr('action'),
@@ -87,7 +85,7 @@ var EmailAmass = (function() {
     */
     function injectHtml() {
         var html = `
-            <div id="email-amass">
+            <div id="lad-ea">
                 <div class="email-amass-form-wrapper">
                 <h2>Full-Stack Dev Hacks</h2>
                 <p class="sub-heading">Get the latest Python, JavaScript and DevOps tutorials</p>
@@ -116,12 +114,12 @@ var EmailAmass = (function() {
     function injectCss() {
         var css = `
         <style type="text/css">
-            html.email-amass-block-scroll {
+            html.lad-ea-stop-scroll {
                 overflow-x: hidden !important;
                 overflow-y: hidden !important;
             }
 
-            #email-amass {
+            #lad-ea {
                 z-index: 99999;
                 display: none;
                 background-color: #f2f2f2;
@@ -132,19 +130,20 @@ var EmailAmass = (function() {
                 height: 100%;
                 text-align: center;
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 10px;
             }
 
-            #email-amass h2 {
-                font-size: 50px;
+            #lad-ea h2 {
+                font-size: 5em;
             }
 
-            #email-amass p.sub-heading {
-                font-size: 30px;
+            #lad-ea p.sub-heading {
+                font-size: 3em;
             }
 
-            #email-amass div.email-amass-form-wrapper {
+            #lad-ea div.email-amass-form-wrapper {
                 width: 100%;
-                height: 300px;
+                height: 30em;
                 position: absolute;
                 left: 0;
                 top: 20%;
@@ -155,14 +154,14 @@ var EmailAmass = (function() {
             }
 
 
-            #email-amass .email-amass-txt-input {
+            #lad-ea .email-amass-txt-input {
                 box-shadow: none;
                 border: 1px solid #c3c3c3;
                 padding: 7px;
-                font-size: 25px;
+                font-size: 2.5em;
             }
 
-            #email-amass .email-amass-btn {
+            #lad-ea .email-amass-btn {
                 color: #fff;
                 font-size: 20px;
                 padding: 15px;
@@ -178,11 +177,11 @@ var EmailAmass = (function() {
                 background-color: #204194;
             }
 
-            #email-amass a.email-amass-down-arrow-link {
+            #lad-ea a.email-amass-down-arrow-link {
                 border-radius: 50%;
             }
 
-            #email-amass div.down-arrow-wrapper {
+            #lad-ea div.down-arrow-wrapper {
                 position: absolute;
                 width: 100%;
                 top: 90%;
@@ -190,7 +189,7 @@ var EmailAmass = (function() {
 
             }
 
-            #email-amass span.email-amass-down-arrow {
+            #lad-ea span.email-amass-down-arrow {
                 display: inline-block;
                 width: 3em;
                 height: 3em;
@@ -199,7 +198,7 @@ var EmailAmass = (function() {
                 margin-left: 0.75em;
             }
 
-            #email-amass span.email-amass-down-arrow:after {
+            #lad-ea span.email-amass-down-arrow:after {
                 content: '';
                 display: inline-block;
                 margin-top: 0.3em;
